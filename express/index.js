@@ -8,11 +8,11 @@ const pathdir = path.join(__dirname,'public')
 app.use(express.static(pathdir));
 
 app.get('/', (req, res) =>{
-     res.send(`${pathdir}/index.html`);
+     res.sendFile(`${pathdir}/index.html`);
     });
 
 app.get('/about', (req, res) =>{
-    res.send(`${pathdir}/home.html`)});
+    res.sendFile(`${pathdir}/home.html`)});
 
 app.get('/download', (req, res) =>{
     res.download(`${pathdir}/index.html`)});
