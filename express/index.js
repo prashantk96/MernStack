@@ -1,15 +1,20 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+const path = require("path");
+const app = express();
+const port = 3000;
+
+const pathdir = path.join(__dirname,'public')
+
+app.use(express.static(pathdir));
 
 app.get('/', (req, res) =>{
-     res.send('Hello World!')
+     res.send(`${pathdir}/index.html`);
     });
 
 app.get('/about', (req, res) =>{
-    res.send('this is about page')});
+    res.send(`${pathdir}/home.html`)});
 
 app.get('/download', (req, res) =>{
-    res.send('download file.')});
+    res.download(`${pathdir}/index.html`)});
 
 app.listen(port, () => {console.log(`Example app listening on port ${port}!`)});
